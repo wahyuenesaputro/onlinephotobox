@@ -1,4 +1,6 @@
 /* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&family=Dancing+Script:wght@700&family=Poppins:wght@400;600;800&display=swap');
+
 :root {
   --primary-color: #ff0055;
   --secondary-color: #ffcc00;
@@ -35,17 +37,16 @@ h1 {
   font-weight: 800;
   font-size: 3rem;
   margin-bottom: 5px;
-  background: linear-gradient(to right, #ff00cc, #ffcc00);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #eee;
   letter-spacing: -1px;
+  text-align: center;
 }
 
 .subtitle {
   color: #888;
   margin-bottom: 30px;
   font-weight: 400;
+  text-align: center;
 }
 
 .webcam-wrapper {
@@ -157,13 +158,8 @@ h1 {
   
   /* Efek Kertas */
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-  transform: rotate(-2deg); /* Miring dikit biar artistik */
-  transition: transform 0.3s;
   position: relative;
-}
-
-.photobooth-grid-container:hover {
-  transform: rotate(0deg) scale(1.02);
+  border-radius: 4px;
 }
 
 /* Logo/Tulisan di bagian bawah kertas */
@@ -205,12 +201,108 @@ h1 {
   stroke-width: 1;
 }
 
+/* --- TEMPLATE STYLES --- */
+/* Template 2: Love */
+.photobooth-grid-container.template-2 {
+  background-color: #FFF0F5; /* LavenderBlush */
+}
+.photobooth-grid-container.template-2::after {
+  content: "Mofu Love";
+  color: #ff0055;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+.photobooth-grid-container.template-2 .grid-photo-item {
+  filter: saturate(120%) contrast(105%);
+}
+
+/* Template 3: Vintage */
+.photobooth-grid-container.template-3 {
+  background-color: #f5e8d0; /* A yellowish paper color */
+  border: 1px solid #dcd0b9;
+  padding: 15px 15px 55px 15px;
+}
+.photobooth-grid-container.template-3::after {
+  content: "VINTAGE MEMORIES";
+  color: #5a4a3a;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+.photobooth-grid-container.template-3 .grid-photo-item {
+  filter: sepia(50%) contrast(100%) brightness(95%);
+}
+
 /* --- FOOTER --- */
 .footer {
   margin-top: 50px;
   font-size: 12px;
   opacity: 0.5;
   text-align: center;
+}
+
+/* --- DASHBOARD --- */
+.dashboard-card {
+  background: #2a2a2a;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #333;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dashboard-card h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 2rem;
+  color: white;
+}
+
+.dashboard-card p {
+  color: #ddd;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.icon-container {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.btn-lg {
+  padding: 15px 40px;
+  font-size: 1.2rem;
+}
+
+/* --- TEMPLATE SELECTOR --- */
+.template-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.template-selector button {
+  padding: 8px 16px;
+  border: 2px solid var(--glass-bg);
+  background-color: transparent;
+  color: #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.template-selector button.active,
+.template-selector button:hover {
+  background-color: var(--glass-bg);
+  border-color: var(--primary-color);
+  color: white;
 }
 
 /* --- RESPONSIVE DESIGN --- */
@@ -221,12 +313,10 @@ h1 {
 
   h1 {
     font-size: 2.2rem;
-    text-align: center;
   }
 
   .subtitle {
     font-size: 0.9rem;
-    text-align: center;
     margin-bottom: 25px;
   }
 

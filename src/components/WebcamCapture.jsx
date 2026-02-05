@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 import html2canvas from 'html2canvas'; // Import library download
 
-const WebcamCapture = () => {
+const WebcamCapture = ({ template }) => {
   const webcamRef = useRef(null);
   const gridRef = useRef(null); // Ref untuk mengambil elemen grid
   
@@ -133,7 +133,7 @@ const WebcamCapture = () => {
           
           {/* Ini bagian yang akan di-screenshot oleh html2canvas */}
           {/* Kita pasang ref={gridRef} di sini */}
-          <div className="photobooth-grid-container" ref={gridRef}>
+          <div className={`photobooth-grid-container ${template}`} ref={gridRef}>
             
             {/* Render Foto */}
             {images.map((img, index) => (
