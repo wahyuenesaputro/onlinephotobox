@@ -1,52 +1,278 @@
 /* src/App.css */
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&family=Dancing+Script:wght@700&family=Poppins:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
 
 :root {
-  --primary-color: #ff0055;
-  --secondary-color: #ffcc00;
-  --bg-dark: #121212;
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --paper-white: #ffffff;
+  --primary-color: #ff9a9e;
+  --primary-gradient: linear-gradient(to right, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  --secondary-color: #a18cd1;
+  --bg-light: #f9f9f9;
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --white: #ffffff;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-dark);
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.2) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(255, 204, 0, 0.15) 0%, transparent 20%);
-  color: white;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
   min-height: 100vh;
+  width: 100%;
 }
 
-h1 {
+/* --- NAVBAR --- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  padding: 15px 0;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
   font-weight: 800;
-  font-size: 3rem;
-  margin-bottom: 5px;
-  color: #eee;
-  letter-spacing: -1px;
-  text-align: center;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
 }
 
-.subtitle {
-  color: #888;
-  margin-bottom: 30px;
-  font-weight: 400;
+.navbar-logo span {
+  color: var(--primary-color);
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.navbar-menu a:hover, .navbar-menu a.active {
+  color: var(--primary-color);
+}
+
+/* --- HERO SLIDER --- */
+.hero-slider {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  color: white;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.slide-content p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: white;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+  flex: 1;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.section-header p {
+  color: var(--text-gray);
+}
+
+.photobooth-area {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* --- START CARD --- */
+.start-card {
+  background: var(--white);
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  transition: transform 0.3s;
+}
+
+.start-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.icon-wrapper {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.start-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.start-card p {
+  color: var(--text-gray);
+  margin-bottom: 30px;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-image: var(--primary-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 154, 158, 0.6);
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+  background: #e0e0e0;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #ddd;
+  color: var(--text-gray);
+  padding: 8px 20px;
+}
+
+.btn-outline:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-download {
+  background: #84fab0;
+  background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+  color: white;
+}
+
+/* --- WEBCAM WRAPPER & COMPONENTS --- */
+.camera-wrapper-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera-header {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .webcam-wrapper {
@@ -55,41 +281,15 @@ h1 {
   text-align: center;
 }
 
-/* --- KAMERA FRAME --- */
 .camera-box {
   position: relative;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0 30px rgba(255, 0, 85, 0.3);
-  border: 4px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-soft);
+  border: 8px solid white;
   background: black;
 }
 
-/* Overlay Countdown */
-.countdown-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
-  z-index: 10;
-}
-
-.countdown-text {
-  font-size: 100px;
-  font-weight: 800;
-  color: white;
-  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes popIn {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-/* --- TOMBOL-TOMBOL --- */
 .controls {
   margin-top: 25px;
   display: flex;
@@ -98,42 +298,9 @@ h1 {
   justify-content: center;
 }
 
-.btn {
-  padding: 12px 28px;
-  border-radius: 50px;
-  border: none;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.btn:active {
-  transform: scale(0.95);
-}
-
-.btn-primary {
-  background: linear-gradient(45deg, #ff0055, #ff5500);
-  color: white;
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-.btn-secondary:hover { background: rgba(255, 255, 255, 0.2); }
-
-.btn-download {
-  background: #00c853;
-  color: white;
-}
-
-/* --- HASIL GRID FOTO (POLAROID STYLE) --- */
+/* --- RESULT SECTION --- */
 .result-section {
-  margin-top: 50px;
+  margin-top: 40px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -142,180 +309,39 @@ h1 {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(50px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Ini kertas fotonya */
 .photobooth-grid-container {
-  width: 90%;
-  max-width: 400px;
-  padding: 20px 20px 60px 20px; /* Padding bawah lebih besar untuk logo */
-  background-color: var(--paper-white);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  
-  /* Efek Kertas */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-  position: relative;
+  background-color: white;
+  box-shadow: var(--shadow-hover);
   border-radius: 4px;
-}
-
-/* Logo/Tulisan di bagian bawah kertas */
-.photobooth-grid-container::after {
-  content: "MOFU PHOTOBOX";
-  position: absolute;
-  bottom: 15px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #333;
-  font-weight: 800;
-  font-size: 1.2rem;
-  letter-spacing: 2px;
+  /* Styles from previous WebcamCapture logic will apply here */
 }
 
 .grid-photo-item {
   width: 100%;
-  aspect-ratio: 1 / 1;
   object-fit: cover;
   background-color: #eee;
-  filter: sepia(10%) contrast(110%); /* Sedikit filter vintage */
 }
 
 .grid-placeholder {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  background-color: #f4f4f4;
+  background-color: #f0f0f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ddd;
-  font-size: 2rem;
-}
-
-.grid-placeholder svg {
-  width: 40%;
-  height: 40%;
-  stroke-width: 1;
-}
-
-/* --- TEMPLATE STYLES --- */
-/* Template 2: Love */
-.photobooth-grid-container.template-2 {
-  background-color: #FFF0F5; /* LavenderBlush */
-}
-.photobooth-grid-container.template-2::after {
-  content: "Mofu Love";
-  color: #ff0055;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-}
-.photobooth-grid-container.template-2 .grid-photo-item {
-  filter: saturate(120%) contrast(105%);
-}
-
-/* Template 3: Vintage */
-.photobooth-grid-container.template-3 {
-  background-color: #f5e8d0; /* A yellowish paper color */
-  border: 1px solid #dcd0b9;
-  padding: 15px 15px 55px 15px;
-}
-.photobooth-grid-container.template-3::after {
-  content: "VINTAGE MEMORIES";
-  color: #5a4a3a;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 2px;
-}
-.photobooth-grid-container.template-3 .grid-photo-item {
-  filter: sepia(50%) contrast(100%) brightness(95%);
+  color: #ccc;
 }
 
 /* --- FOOTER --- */
 .footer {
-  margin-top: 50px;
-  font-size: 12px;
-  opacity: 0.5;
+  margin-top: auto;
+  padding: 30px;
+  font-size: 14px;
+  color: var(--text-gray);
   text-align: center;
-}
-
-/* --- DASHBOARD --- */
-.dashboard-card {
-  background: #2a2a2a;
-  padding: 40px;
-  border-radius: 16px;
-  border: 1px solid #333;
-  text-align: center;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.dashboard-card h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 2rem;
-  color: white;
-}
-
-.dashboard-card p {
-  color: #ddd;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.icon-container {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.btn-lg {
-  padding: 15px 40px;
-  font-size: 1.2rem;
-}
-
-/* --- RESPONSIVE DESIGN --- */
-@media (max-width: 640px) {
-  .app-container {
-    padding: 25px 15px;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 25px;
-  }
-
-  .countdown-text {
-    font-size: 80px;
-  }
-
-  .photobooth-grid-container {
-    width: 100%;
-    padding: 15px 15px 50px 15px;
-    gap: 8px;
-  }
-
-  .photobooth-grid-container::after {
-    font-size: 1rem;
-    bottom: 12px;
-  }
-
-  .controls {
-    gap: 10px;
-  }
-
-  .btn {
-    padding: 10px 22px;
-    font-size: 0.9rem;
-  }
+  background: white;
+  width: 100%;
+  border-top: 1px solid #eee;
 }
