@@ -10,7 +10,7 @@ function App() {
       
       <WebcamCapture />
 
-      <footer style={{ marginTop: '50px', fontSize: '12px', opacity: 0.5 }}>
+      <footer className="footer">
         © 2026 Mofu Studio Project
       </footer>
     </div>
