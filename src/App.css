@@ -280,31 +280,6 @@ h1 {
   font-size: 1.2rem;
 }
 
-/* --- TEMPLATE SELECTOR --- */
-.template-selector {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.template-selector button {
-  padding: 8px 16px;
-  border: 2px solid var(--glass-bg);
-  background-color: transparent;
-  color: #ddd;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.template-selector button.active,
-.template-selector button:hover {
-  background-color: var(--glass-bg);
-  border-color: var(--primary-color);
-  color: white;
-}
-
 /* --- RESPONSIVE DESIGN --- */
 @media (max-width: 640px) {
   .app-container {

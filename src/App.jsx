@@ -6,7 +6,6 @@ import Footer from './components/Footer.jsx'
 
 function App() {
   const [showCamera, setShowCamera] = useState(false)
-  const [template, setTemplate] = useState('template-1');
 
   return (
     <div className="app-container">
@@ -21,17 +20,6 @@ function App() {
             Siapkan pose terbaikmu! Kita akan mengambil <strong>4 foto</strong> secara otomatis
             dengan jeda waktu. Hasilnya bisa langsung di-download loh!
           </p>
-          <div className="template-selector">
-            <button className={template === 'template-1' ? 'active' : ''} onClick={() => setTemplate('template-1')}>
-              Polos
-            </button>
-            <button className={template === 'template-2' ? 'active' : ''} onClick={() => setTemplate('template-2')}>
-              Love
-            </button>
-            <button className={template === 'template-3' ? 'active' : ''} onClick={() => setTemplate('template-3')}>
-              Vintage
-            </button>
-          </div>
           <button className="btn btn-primary btn-lg" onClick={() => setShowCamera(true)}>
             Mulai Photobooth 🚀
           </button>
@@ -43,7 +31,7 @@ function App() {
               &larr; Kembali
             </button>
           </div>
-          <WebcamCapture template={template} />
+          <WebcamCapture />
         </>
       )}
 
