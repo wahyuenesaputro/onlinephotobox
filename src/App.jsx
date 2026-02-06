@@ -8,37 +8,6 @@ import HeroSlider from './components/HeroSlider.jsx'
 
 function App() {
   const [showCamera, setShowCamera] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Data Slider
-  const slides = [
-    {
-      id: 1,
-      text: "Capture Your Best Moment ✨",
-      subtext: "Create memories that last forever with our aesthetic filters.",
-      color: "#ff9a9e" // Pastel Pink
-    },
-    {
-      id: 2,
-      text: "Korean Style Photobooth 📸",
-      subtext: "Cute frames and layouts just like in Seoul.",
-      color: "#a18cd1" // Pastel Purple
-    },
-    {
-      id: 3,
-      text: "Fun with Besties 👯‍♀️",
-      subtext: "Grab your friends and strike a pose!",
-      color: "#84fab0" // Pastel Green
-    }
-  ];
-
-  // Auto Slide Logic
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [slides.length]);
 
   return (
     <div className="app-container">
@@ -48,7 +17,7 @@ function App() {
       {/* MAIN CONTENT */}
       <main className="main-content">
         <div className="container">
-          <section className="photobooth-section">
+          <section id="photobooth" className="photobooth-section">
             <div className="section-header">
               <h2>Let's Take a Photo!</h2>
               <p>Ready to shine? Click the button below to start.</p>

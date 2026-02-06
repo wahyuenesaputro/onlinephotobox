@@ -1,25 +1,31 @@
-// c:\laragon\www\mofu_onlinephotobox\src\components\Footer.jsx
 import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="footer" style={{ backdropFilter: 'blur(5px)', padding: '20px' }}>
-      <p style={{ margin: 0 }}>
-        © 2026 <strong>Mofu Studio Project</strong>
-      </p>
-      <p style={{ margin: '5px 0 0', fontSize: '0.9em', opacity: 0.8 }}>
-        Made with ❤️ by{' '}
-        <a 
-          href="https://github.com/wahyuenesaputro" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{ color: '#ff0055', textDecoration: 'none', fontWeight: '600', transition: 'color 0.3s' }}
-          onMouseOver={(e) => e.target.style.color = '#ffcc00'}
-          onMouseOut={(e) => e.target.style.color = '#ff0055'}
-        >
-          Wahyu Enesa Putro
-        </a>
-      </p>
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-content">
+          <div className="footer-section">
+            <h3>Mofu Studio</h3>
+            <p>Capture your best moments with our online photobooth. Professional quality photos right from your browser.</p>
+          </div>
+          <div className="footer-section">
+            <h3>Quick Links</h3>
+            <div className="footer-links">
+              <a href="#home">Home</a>
+              <a href="#photobooth">Photobooth</a>
+              <a href="#about">About</a>
+            </div>
+          </div>
+          <div className="footer-section">
+            <h3>Connect</h3>
+            <p>Follow us on social media for more fun photo ideas!</p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2024 Mofu Studio. Made with ❤️ for fun photography experiences.</p>
+        </div>
+      </div>
     </footer>
   );
 };
