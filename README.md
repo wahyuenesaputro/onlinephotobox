@@ -50,7 +50,6 @@ Tambahin nanti:
 
 public/preview.gif
 
-````
 
 ```md
 ![Preview](public/preview.gif)
