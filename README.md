@@ -29,8 +29,6 @@ Cukup buka → pose → auto capture → download.
 Tambahin nanti:
 public/preview.gif
 
-
-```md
 ![Preview](public/preview.gif)
 (Record pakai ScreenToGif biar makin kece 🔥)
 
