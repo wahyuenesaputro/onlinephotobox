@@ -16,29 +16,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    // Handle smooth scrolling for hash links
-    if (location.hash) {
-      const id = location.hash.substring(1); // remove #
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 0);
-    }
-  }, [location]);
-
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Photobooth', path: '/photobooth' },
-    { name: 'Gallery', path: '/#gallery' },
-    { name: 'Contact', path: '/#contact' },
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      isScrolled || isMobileMenuOpen ? 'bg-white/80 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+      isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
@@ -55,7 +42,7 @@ const Navbar = () => {
                 <Link 
                   to={link.path} 
                   className={`text-sm font-medium transition-colors duration-300 ${
-                    location.pathname + location.hash === link.path
+                    location.pathname === link.path 
                       ? 'text-pink-500 font-semibold' 
                       : 'text-gray-600 hover:text-pink-500'
                   }`}
@@ -88,8 +75,8 @@ const Navbar = () => {
             <Link 
               key={link.name}
               to={link.path}
-              className={`text-lg font-medium ${ 
-                location.pathname + location.hash === link.path ? 'text-pink-500' : 'text-gray-800'
+              className={`text-lg font-medium ${
+                location.pathname === link.path ? 'text-pink-500' : 'text-gray-800'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >

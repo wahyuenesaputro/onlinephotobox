@@ -1,107 +1,107 @@
 import { useState, useEffect } from 'react';
-import { Github, Instagram, Video, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Camera, ArrowRight, Instagram, Github } from 'lucide-react';
+import Button from '@/components/ui/Button';
 
 const slides = [
   {
     id: 1,
-    text: "Capture Your Glow ✨",
-    subtext: "Studio quality photos right from your browser. No app needed.",
-    backgroundImage: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Capture Your Glow",
+    subtitle: "Studio quality photos right from your browser. No app needed."
   },
   {
     id: 2,
-    text: "Korean Aesthetic 📸",
-    subtext: "Experience the viral Seoul photobooth style instantly.",
-    backgroundImage: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Korean Aesthetic",
+    subtitle: "Experience the viral Seoul photobooth style instantly."
   },
   {
     id: 3,
-    text: "Share the Vibe 🚀",
-    subtext: "Grab your besties, strike a pose, and go viral!",
-    backgroundImage: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+    title: "Share the Vibe",
+    subtitle: "Grab your besties, strike a pose, and go viral!"
   }
 ];
 
-const socialLinks = [
-  { id: 1, icon: <Github size={20} />, url: "https://github.com/wahyuenesaputro", label: "Github" },
-  { id: 2, icon: <Video size={20} />, url: "https://tiktok.com/@usertiktokmu", label: "TikTok" },
-  { id: 3, icon: <Instagram size={20} />, url: "https://instagram.com/userigmu", label: "Instagram" }
-];
-
 const HeroSlider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [current, setCurrent] = useState(0);
 
-  // Auto slide every 4 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
   }, []);
 
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-  };
-
   return (
-    <header className="hero-slider">
+    <section className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center bg-gray-900">
+      {/* Background Slides */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`slide ${index === currentSlide ? 'active' : ''}`}
-          style={{
-            backgroundImage: `url(${slide.backgroundImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === current ? 'opacity-100' : 'opacity-0'
+          }`}
         >
-          <div className="slide-overlay">
-            <div className="slide-content">
-              <h1 className="slide-title">
-                {slide.text}
-              </h1>
-              <p className="slide-subtitle">
-                {slide.subtext}
-              </p>
-
-              <a
-                href="#photobooth"
-                className="cta-button"
-              >
-                Start Photo <ArrowRight size={20} />
-              </a>
-
-              <div className="social-bar">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.id}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon"
-                    title={social.label}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+          <img 
+            src={slide.image} 
+            alt={slide.title} 
+            className="w-full h-full object-cover object-center scale-105 animate-pulse-slow" 
+          />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
         </div>
       ))}
 
-      <div className="slider-dots">
+      {/* Glass Card Content */}
+      <div className="relative z-10 max-w-4xl w-full mx-4">
+        <div className="bg-white/10 backdrop-blur-lg border border-white/20 p-8 md:p-12 rounded-3xl shadow-2xl text-center transform transition-all hover:scale-[1.01] duration-500">
+          <div className="inline-flex items-center justify-center p-3 bg-white/20 rounded-full mb-6 backdrop-blur-md">
+            <Camera className="text-white w-8 h-8" />
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
+            {slides[current].title}
+          </h1>
+          
+          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
+            {slides[current].subtitle}
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/photobooth">
+              <Button variant="primary" className="!text-lg !px-10 !py-4 shadow-xl shadow-pink-500/20">
+                Start Photo <ArrowRight size={20} />
+              </Button>
+            </Link>
+            <Link to="/#gallery">
+              <Button variant="outline" className="!text-lg !px-10 !py-4">
+                View Gallery
+              </Button>
+            </Link>
+          </div>
+
+          {/* Social Proof / Icons */}
+          <div className="mt-10 pt-8 border-t border-white/10 flex justify-center gap-6">
+            <a href="https://www.instagram.com/wahyunesa_/" className="text-white/70 hover:text-white transition-colors"><Instagram size={24} /></a>
+            <a href="https://github.com/wahyuenesaputro" className="text-white/70 hover:text-white transition-colors"><Github size={24} /></a>
+          </div>
+        </div>
+      </div>
+
+      {/* Dots */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex gap-3 z-20">
         {slides.map((_, idx) => (
           <button
             key={idx}
-            className={`dot ${idx === currentSlide ? 'active' : ''}`}
-            onClick={() => goToSlide(idx)}
+            onClick={() => setCurrent(idx)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              idx === current ? 'bg-pink-500 w-8' : 'bg-white/50 hover:bg-white'
+            }`}
           />
         ))}
       </div>
-    </header>
+    </section>
   );
 };
 
