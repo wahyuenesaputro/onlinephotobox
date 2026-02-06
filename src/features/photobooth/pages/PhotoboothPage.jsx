@@ -105,8 +105,8 @@ const PhotoboothPage = () => {
               setIsCameraOn={setIsCameraOn}
               flash={flash}
               countdown={countdown}
-              isCapturing={isCapturing}
               selectedFilter={selectedFilter}
+              images={images}
             >
               <Controls 
                 isCapturing={isCapturing}
