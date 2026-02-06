@@ -1,22 +1,3 @@
-Siap bro 😎
-Kita **upgrade README lu jadi keliatan PRO + sangar + Tailwind vibes + open-source ready**.
-
-Gue tambahin:
-✅ Badge English
-✅ Tailwind badge
-✅ Version
-✅ License
-✅ Deploy
-✅ Tech stack lengkap
-✅ Keliatan kayak repo startup beneran (bukan tugas kampus 🤣)
-
-Tinggal **copy paste replace README.md**.
-
----
-
-# 🔥 README GUACOR MAXIMAL (Premium + Badge Lengkap)
-
-```md
 # ✨ Mofu Online Photobox 📸
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
