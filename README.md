@@ -1,67 +1,154 @@
 # ✨ Mofu Online Photobox 📸
 
-![React](https://img.shields.io/badge/React-20232a?style=for-the-badge&logo=react&logoColor=61dafb)
-![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
-![Style](https://img.shields.io/badge/Style-Glassmorphism-pink?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
+![Language](https://img.shields.io/badge/lang-English%20%7C%20Indonesia-green?style=for-the-badge)
+![React](https://img.shields.io/badge/React-19-20232a?style=for-the-badge&logo=react&logoColor=61dafb)
+![Vite](https://img.shields.io/badge/Vite-fastest-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-utility--first-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-black?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-Production%20Ready-success?style=for-the-badge)
 
-> **"Abadikan momen narsismu tanpa harus keluar rumah. Sekali klik, langsung jadi selebgram!"** 🤙
-
-## 🧐 Apaan Tuh?
-
-**Mofu Photobox** adalah aplikasi Photobooth berbasis web yang *aesthetic* parah. Dibuat buat kamu yang pengen foto ala-ala photobox Korea (4 grid) tapi males bayar mahal di mall.
-
-Tinggal buka di browser, gaya 4 kali, terus download hasilnya. **Gratis, cepet, dan pastinya *Slebew*!**
+> **"Abadikan momen narsismu tanpa keluar rumah. Sekali klik, langsung jadi selebgram!"** 🤙
 
 ---
 
-## 🔥 Fitur Kece Badai
+## 🎯 What is this?
 
-* **📸 4x Auto Capture:** Gak perlu ribet klik tombol berkali-kali. Sekali mulai, dia bakal motret 4 kali otomatis.
-* **⏱️ Smart Countdown:** Ada hitung mundur (3..2..1.. Cheese!) biar gaya lu gak *awkward*.
-* **🖼️ Instant Grid Layout:** Foto lu otomatis disusun jadi kotak 2x2 yang rapih bener.
-* **💾 One-Click Download:** Suka hasilnya? Tombol download warna hijau siap mengamankan fotomu ke galeri (format HD .png).
-* **💎 Glassmorphism UI:** Tampilan antarmuka modern, gelap, dan transparan. Enak di mata.
+**Mofu Online Photobox** adalah aplikasi **web photobooth aesthetic ala Korea** yang berjalan langsung di browser.
+
+Tanpa install.  
+Tanpa ribet.  
+Tanpa bayar mahal di mall.
+
+Cukup buka → pose → auto capture → download.
 
 ---
 
-## 🚀 Cara Pakai (Gas Ngeng!)
+## 🖼 Preview
 
-Mau nyobain di laptop sendiri? Gampang banget, ikutin tutorial *anti-ribet* ini:
+Tambahin nanti:
+public/preview.gif
 
-### 1. Persiapan Bahan (Clone Dulu Bos)
-Buka terminal/CMD, terus ketik mantra ini:
-```bash
-git clone [https://github.com/wahyuenesaputro/onlinephotobox.git](https://github.com/wahyuenesaputro/onlinephotobox.git)
+
+```md
+![Preview](public/preview.gif)
+(Record pakai ScreenToGif biar makin kece 🔥)
+
+🔥 Fitur Utama
+📸 Smart Camera
+Auto 4x capture
+
+Countdown timer
+
+Real-time webcam preview
+
+🎨 Style & Custom
+Filter warna (B&W, Vintage, Cool, Warm, dll)
+
+Pilihan template photostrip
+
+Layout aesthetic
+
+Glassmorphism UI
+
+⚡ Fast & Modern
+Instant render
+
+No backend
+
+Pure client-side
+
+Offline ready
+
+💾 Export
+Download PNG HD
+
+Siap upload IG/TikTok
+
+Rasio photobox asli
+
+🛠 Tech Stack
+Tech	Fungsi
+React 19	UI engine
+Vite	super fast bundler
+TailwindCSS	styling modern
+React Webcam	akses kamera
+html2canvas	export gambar
+Lucide Icons	icon kece
+🚀 Installation
+1️⃣ Clone
+git clone https://github.com/wahyuenesaputro/onlinephotobox.git
 cd onlinephotobox
-2. Belanja Bumbu (Install Dependencies)
-Biar kodingannya jalan, install dulu "otak" aplikasinya:
-
-Bash
+2️⃣ Install
 npm install
-(Tungguin bentar sambil ngopi... ☕)
-
-3. Nyalain Mesin (Run Project)
-Saatnya beraksi! Ketik perintah sakti ini:
-
-Bash
+3️⃣ Run
 npm run dev
-4. Selesai! 🎉
-Buka browser kesayangan kamu (Chrome/Edge/Firefox), terus akses: http://localhost:5173
+Buka:
 
-Dan... BOOM! Wajah ganteng/cantikmu sudah muncul di layar. Silakan berpose!
+http://localhost:5173
+Done. Pose dulu 😎
 
-🛠️ Teknologi di Balik Layar
-Aplikasi ini dibangun pake teknologi jaman now:
+📂 Struktur Project
+src/
+ ├ assets/
+ ├ components/
+ ├ features/
+ │   └ photobooth/
+ │       ├ components/
+ │       ├ pages/
+ │       └ utils/
+ ├ App.jsx
+ └ main.jsx
+Clean architecture + scalable.
 
-React JS - Biar aplikasinya ngebut & reaktif.
+💎 Roadmap
+ Auto capture
 
-Vite - Build tool yang kencengnya ngalahin motor drag.
+ Countdown
 
-React Webcam - Buat akses kamera laptop/HP lu.
+ Download PNG
 
-HTML2Canvas - Buat nyetak grid foto jadi file gambar.
+ Tailwind UI
 
-CSS3 - Buat makeup biar tampilannya glowing.
+ Filter efek
 
-🤝 Kontribusi
-Merasa tertantang buat nambahin filter stiker atau ganti background? Sabi banget! Silakan Fork repo ini, oprek sesuka hati, terus Pull Request.
+ Sticker fun
+
+ Template custom
+
+ Background music
+
+ Share ke IG/TikTok
+
+🤝 Contribute
+Gas banget kalau mau bantu:
+
+Fork
+
+Feature branch
+
+Pull request
+
+Semakin banyak fitur → makin gacor 🚀
+
+⭐ Support
+Kalau project ini ngebantu:
+👉 kasih ⭐ di repo biar makin semangat ngoding
+
+🧑‍💻 Author
+Made with 💖 by Wahyu Nesa
+
+
+---
+
+Kalau mau next:
+🔥 badge deploy vercel  
+🔥 dark theme screenshot  
+🔥 animated gif preview  
+🔥 banner header  
+
+tinggal bilang:
+👉 "tambahin banner + preview gif"  
+👉 "buatkan badge deploy vercel"
+
+Gas bro kita bikin repo lu keliatan startup 10M funding 🤣
