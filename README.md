@@ -27,68 +27,97 @@ Cukup buka → pose → auto capture → download.
 ## 🖼 Preview
 
 Tambahin nanti:
+```
+
 public/preview.gif
 
+````
 
 ```md
 ![Preview](public/preview.gif)
+````
+
 (Record pakai ScreenToGif biar makin kece 🔥)
 
-🔥 Fitur Utama
-📸 Smart Camera
-Auto 4x capture
+---
 
-Countdown timer
+# 🔥 Fitur Utama
 
-Real-time webcam preview
+### 📸 Smart Camera
 
-🎨 Style & Custom
-Filter warna (B&W, Vintage, Cool, Warm, dll)
+* Auto 4x capture
+* Countdown timer
+* Real-time webcam preview
 
-Pilihan template photostrip
+### 🎨 Style & Custom
 
-Layout aesthetic
+* Filter warna (B&W, Vintage, Cool, Warm, dll)
+* Pilihan template photostrip
+* Layout aesthetic
+* Glassmorphism UI
 
-Glassmorphism UI
+### ⚡ Fast & Modern
 
-⚡ Fast & Modern
-Instant render
+* Instant render
+* No backend
+* Pure client-side
+* Offline ready
 
-No backend
+### 💾 Export
 
-Pure client-side
+* Download PNG HD
+* Siap upload IG/TikTok
+* Rasio photobox asli
 
-Offline ready
+---
 
-💾 Export
-Download PNG HD
+# 🛠 Tech Stack
 
-Siap upload IG/TikTok
+| Tech         | Fungsi             |
+| ------------ | ------------------ |
+| React 19     | UI engine          |
+| Vite         | super fast bundler |
+| TailwindCSS  | styling modern     |
+| React Webcam | akses kamera       |
+| html2canvas  | export gambar      |
+| Lucide Icons | icon kece          |
 
-Rasio photobox asli
+---
 
-🛠 Tech Stack
-Tech	Fungsi
-React 19	UI engine
-Vite	super fast bundler
-TailwindCSS	styling modern
-React Webcam	akses kamera
-html2canvas	export gambar
-Lucide Icons	icon kece
-🚀 Installation
-1️⃣ Clone
+# 🚀 Installation
+
+## 1️⃣ Clone
+
+```bash
 git clone https://github.com/wahyuenesaputro/onlinephotobox.git
 cd onlinephotobox
-2️⃣ Install
+```
+
+## 2️⃣ Install
+
+```bash
 npm install
-3️⃣ Run
+```
+
+## 3️⃣ Run
+
+```bash
 npm run dev
+```
+
 Buka:
 
+```
 http://localhost:5173
+```
+
 Done. Pose dulu 😎
 
-📂 Struktur Project
+---
+
+# 📂 Struktur Project
+
+```
 src/
  ├ assets/
  ├ components/
@@ -99,45 +128,50 @@ src/
  │       └ utils/
  ├ App.jsx
  └ main.jsx
+```
+
 Clean architecture + scalable.
 
-💎 Roadmap
- Auto capture
+---
 
- Countdown
+# 💎 Roadmap
 
- Download PNG
+* [x] Auto capture
+* [x] Countdown
+* [x] Download PNG
+* [x] Tailwind UI
+* [ ] Filter efek
+* [ ] Sticker fun
+* [ ] Template custom
+* [ ] Background music
+* [ ] Share ke IG/TikTok
 
- Tailwind UI
+---
 
- Filter efek
+# 🤝 Contribute
 
- Sticker fun
-
- Template custom
-
- Background music
-
- Share ke IG/TikTok
-
-🤝 Contribute
 Gas banget kalau mau bantu:
 
-Fork
-
-Feature branch
-
-Pull request
+1. Fork
+2. Feature branch
+3. Pull request
 
 Semakin banyak fitur → makin gacor 🚀
 
-⭐ Support
+---
+
+# ⭐ Support
+
 Kalau project ini ngebantu:
 👉 kasih ⭐ di repo biar makin semangat ngoding
 
-🧑‍💻 Author
-Made with 💖 by Wahyu Nesa
+---
 
+# 🧑‍💻 Author
+
+Made with 💖 by **Wahyu Nesa**
+
+```
 
 ---
 
@@ -152,3 +186,4 @@ tinggal bilang:
 👉 "buatkan badge deploy vercel"
 
 Gas bro kita bikin repo lu keliatan startup 10M funding 🤣
+```
