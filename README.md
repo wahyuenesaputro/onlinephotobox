@@ -10,6 +10,8 @@
 
 > **"Abadikan momen narsismu tanpa keluar rumah. Sekali klik, langsung jadi selebgram!"** 🤙
 
+---
+
 ## 🎯 What is this?
 
 **Mofu Online Photobox** adalah aplikasi **web photobooth aesthetic ala Korea** yang berjalan langsung di browser.
@@ -20,6 +22,8 @@ Tanpa bayar mahal di mall.
 
 Cukup buka → pose → auto capture → download.
 
+---
+
 ## 🖼 Preview
 
 Tambahin nanti:
@@ -27,7 +31,10 @@ Tambahin nanti:
 
 public/preview.gif
 
+
+```md
 ![Preview](public/preview.gif)
+````
 
 (Record pakai ScreenToGif biar makin kece 🔥)
 
@@ -162,5 +169,4 @@ Kalau project ini ngebantu:
 # 🧑‍💻 Author
 
 Made with 💖 by **Wahyu Nesa**
-
-```
+---
