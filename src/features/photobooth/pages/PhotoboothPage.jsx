@@ -96,18 +96,11 @@ const PhotoboothPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 py-4 sm:py-16 md:py-20 font-['Poppins']">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 pt-24 pb-8 sm:py-16 md:py-20 font-['Poppins']">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <header className="text-center mb-2 md:mb-16">
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-3 tracking-tight">
-            Mofu <span className="text-pink-500">Studio</span>
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Capture your aesthetic moments instantly. Zero ads, completely free, and runs in your browser.
-          </p>
-        </header>
+        <div className="h-6 md:h-12 w-full" />
 
         {/* Main Layout Grid */}
         <main className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 lg:gap-y-12 lg:gap-x-12 xl:gap-x-16 items-start">
