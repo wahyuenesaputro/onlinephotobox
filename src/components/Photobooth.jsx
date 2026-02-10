@@ -15,7 +15,7 @@ const Photobooth = () => {
 
   const videoConstraints = {
     width: 720,
-    height: 720,
+    height: 960, 
     facingMode: "user"
   };
 
@@ -81,7 +81,7 @@ const Photobooth = () => {
     <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-8">
       
       {/* Area Kamera / Preview */}
-      <div className="relative w-full max-w-md aspect-square bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+      <div className="relative w-full max-w-md aspect-[3/4] bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
         {/* Flash Effect */}
         <div className={`absolute inset-0 bg-white z-20 pointer-events-none transition-opacity duration-150 ${flash ? 'opacity-100' : 'opacity-0'}`} />
         

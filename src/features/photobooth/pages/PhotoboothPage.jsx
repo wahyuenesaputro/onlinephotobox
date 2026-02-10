@@ -95,11 +95,11 @@ const PhotoboothPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 py-12 sm:py-16 md:py-20 font-['Poppins']">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 py-6 sm:py-16 md:py-20 font-['Poppins']">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <header className="text-center mb-12 md:mb-16">
+        <header className="text-center mb-6 md:mb-16">
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-3 tracking-tight">
             Mofu <span className="text-pink-500">Studio</span>
           </h1>
@@ -109,7 +109,7 @@ const PhotoboothPage = () => {
         </header>
 
         {/* Main Layout Grid */}
-        <main className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-12 xl:gap-x-16 items-start">
+        <main className="grid grid-cols-1 lg:grid-cols-12 gap-y-6 lg:gap-y-12 lg:gap-x-12 xl:gap-x-16 items-start">
           
           {/* Left Column: Webcam, Controls & Tools */}
           <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-8">
