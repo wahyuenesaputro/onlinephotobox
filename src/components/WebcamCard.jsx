@@ -12,7 +12,7 @@ const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, se
   const hasFinished = images.length === 4;
 
   return (
-    <div className="relative w-full aspect-video bg-black rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gray-100 group">
+    <div className="relative w-full aspect-[3/4] md:aspect-video bg-black rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gray-100 group">
       {/* Label Live Camera */}
       {!hasFinished && isCameraOn && (
         <div className="absolute top-6 left-6 z-20 bg-black/50 backdrop-blur-md text-white text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-2 border border-white/20">

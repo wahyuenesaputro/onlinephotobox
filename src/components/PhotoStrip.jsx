@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Cat, Camera } from 'lucide-react';
+import { Camera } from 'lucide-react';
 
 const PhotoStrip = forwardRef(({ images, selectedTemplate, selectedFilter }, ref) => {
   return (
@@ -10,6 +10,9 @@ const PhotoStrip = forwardRef(({ images, selectedTemplate, selectedFilter }, ref
           ref={ref} 
           className="bg-white p-4 flex flex-col gap-4 w-full" 
         >
+          {/* Header Space (Area kosong untuk header template) */}
+          <div className="h-20 w-full" />
+
           {/* Dynamic Layout Grid */}
           <div className={`gap-3 ${selectedTemplate.type}`}>
             {[...Array(4)].map((_, idx) => (
@@ -32,9 +35,6 @@ const PhotoStrip = forwardRef(({ images, selectedTemplate, selectedFilter }, ref
 
           {/* Branding Footer */}
           <div className="mt-2 text-center">
-            <h2 className="text-2xl font-black text-gray-900 tracking-tighter flex items-center justify-center gap-2">
-              <Cat size={24} className="text-pink-500" /> MOFU
-            </h2>
             <p className="text-[10px] text-gray-400 font-bold tracking-[0.2em] uppercase mt-1">{new Date().toLocaleDateString()}</p>
           </div>
         </div>

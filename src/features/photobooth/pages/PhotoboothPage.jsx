@@ -95,11 +95,11 @@ const PhotoboothPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 py-6 sm:py-16 md:py-20 font-['Poppins']">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 py-4 sm:py-16 md:py-20 font-['Poppins']">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <header className="text-center mb-6 md:mb-16">
+        <header className="text-center mb-2 md:mb-16">
           <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-3 tracking-tight">
             Mofu <span className="text-pink-500">Studio</span>
           </h1>
