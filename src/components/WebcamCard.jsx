@@ -1,8 +1,8 @@
 import React from 'react';
 import Webcam from 'react-webcam';
-import { VideoOff, Camera } from 'lucide-react';
+import { VideoOff, Camera, Timer } from 'lucide-react';
 
-const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, selectedFilter, children, images }) => {
+const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, selectedFilter, children, images, timerDuration, setTimerDuration, isCapturing }) => {
   const videoConstraints = {
     width: 1280,
     height: 720,
@@ -18,6 +18,30 @@ const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, se
         <div className="absolute top-6 left-6 z-20 bg-black/50 backdrop-blur-md text-white text-xs font-bold px-4 py-1.5 rounded-full flex items-center gap-2 border border-white/20">
           <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
           LIVE
+        </div>
+      )}
+
+      {/* Timer Settings (Top Right) */}
+      {!hasFinished && isCameraOn && !isCapturing && (
+        <div className="absolute top-6 right-6 z-20 flex items-center gap-2 animate-in fade-in slide-in-from-top-4 duration-500">
+           <div className="bg-black/40 backdrop-blur-md p-1.5 rounded-full border border-white/10 flex gap-1 shadow-lg">
+             <div className="px-2 flex items-center text-white/80">
+                <Timer size={14} />
+             </div>
+             {[3, 5, 7, 10].map((t) => (
+               <button
+                 key={t}
+                 onClick={() => setTimerDuration(t)}
+                 className={`w-8 h-8 rounded-full text-xs font-bold transition-all duration-200 ${
+                   timerDuration === t 
+                     ? 'bg-white text-black shadow-sm scale-105' 
+                     : 'text-white/70 hover:text-white hover:bg-white/10'
+                 }`}
+               >
+                 {t}
+               </button>
+             ))}
+           </div>
         </div>
       )}
 

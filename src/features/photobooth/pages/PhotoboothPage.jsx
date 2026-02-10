@@ -17,6 +17,7 @@ const PhotoboothPage = () => {
   const [isCameraOn, setIsCameraOn] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState(filters[0]);
   const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
+  const [timerDuration, setTimerDuration] = useState(3);
 
   // Logic: Start Sequence
   const startCapture = () => {
@@ -32,7 +33,7 @@ const PhotoboothPage = () => {
       return;
     }
 
-    let timer = 3;
+    let timer = timerDuration;
     setCountdown(timer);
     
     const interval = setInterval(() => {
@@ -121,6 +122,9 @@ const PhotoboothPage = () => {
               countdown={countdown}
               selectedFilter={selectedFilter}
               images={images}
+              timerDuration={timerDuration}
+              setTimerDuration={setTimerDuration}
+              isCapturing={isCapturing}
             >
               <Controls 
                 isCapturing={isCapturing}
