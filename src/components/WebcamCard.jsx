@@ -27,15 +27,15 @@ const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, se
            <div className="bg-black/40 backdrop-blur-md p-1.5 rounded-full border border-white/10 flex gap-1 shadow-lg">
              <div className="px-2 flex items-center text-white/80">
                 <Timer size={14} />
-             </div>
-             {[3, 5, 7, 10].map((t) => (
-               <button
-                 key={t}
-                 onClick={() => setTimerDuration(t)}
-                 className={`w-8 h-8 rounded-full text-xs font-bold transition-all duration-200 ${
-                   timerDuration === t 
-                     ? 'bg-white text-black shadow-sm scale-105' 
-                     : 'text-white/70 hover:text-white hover:bg-white/10'
+           </div>
+                   {[3, 5, 7, 10].map((t) => (
+                     <button
+                   key={t}
+                  onClick={() => setTimerDuration(t)}
+                  className={`w-8 h-8 rounded-full text-xs font-bold transition-all duration-200 ${
+                    timerDuration === t 
+                      ? 'bg-white text-black shadow-sm scale-105' 
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                  }`}
                >
                  {t}

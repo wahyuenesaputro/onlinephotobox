@@ -115,7 +115,7 @@ const Photobooth = () => {
           )
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-gray-900 text-white">
-            <p className="font-semibold">Session Complete! ✨</p>
+            <p className="font-semibold">Session Complete!</p>
           </div>
         )}
       </div>
