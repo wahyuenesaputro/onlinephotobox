@@ -170,7 +170,17 @@ const WebcamCapture = () => {
 
           {/* Ini bagian yang akan di-screenshot oleh html2canvas */}
           {/* Kita pasang ref={gridRef} di sini */}
-          <div className="photobooth-grid-container" ref={gridRef}>
+          <div 
+            className="photobooth-grid-container" 
+            ref={gridRef}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '15px', // Memberikan jarak antar foto
+              padding: '20px',
+              backgroundColor: 'white'
+            }}
+          >
 
             {/* Render Foto */}
             {images.map((img, index) => (
