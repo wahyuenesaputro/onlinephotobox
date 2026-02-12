@@ -3,6 +3,7 @@ import React from 'react';
 export const templates = [
   { id: 'vertical', name: '4-Cut Vertical', type: 'flex-col' },
   { id: 'grid', name: '2x2 Grid', type: 'grid-cols-2' },
+  { id: 'retro', name: 'Retro Purple', type: 'flex-col' },
 ];
 
 const TemplatePicker = ({ selectedTemplate, onSelectTemplate }) => {

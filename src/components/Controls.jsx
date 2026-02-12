@@ -2,8 +2,8 @@ import React from 'react';
 import { Camera, RefreshCw, Download, Video, VideoOff } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
-const Controls = ({ isCapturing, images, isCameraOn, setIsCameraOn, startCapture, retake, downloadStrip }) => {
-  const hasFinished = images.length === 4;
+const Controls = ({ isCapturing, images, isCameraOn, setIsCameraOn, startCapture, retake, downloadStrip, maxPhotos = 4 }) => {
+  const hasFinished = images.length === maxPhotos;
 
   return (
     <div className="flex flex-col items-center gap-4 w-full">
@@ -48,7 +48,7 @@ const Controls = ({ isCapturing, images, isCameraOn, setIsCameraOn, startCapture
       {/* Helper Text */}
       {!isCapturing && !hasFinished && (
         <p className="text-white/90 text-sm font-medium drop-shadow-md">
-          {isCameraOn ? "Ready to capture your glow? ✨" : "Turn on camera to start"}
+          {isCameraOn ? "Ready to capture your glow? " : "Turn on camera to start"}
         </p>
       )}
     </div>

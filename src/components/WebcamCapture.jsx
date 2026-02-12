@@ -98,7 +98,7 @@ const WebcamCapture = () => {
           cameraError ? (
             // Added error display to prevent blank screen when camera access fails
             <div style={{ padding: '100px', color: '#ff6b6b', textAlign: 'center' }}>
-              <p>❌ Kamera tidak dapat diakses</p>
+              <p>Kamera tidak dapat diakses</p>
               <p style={{ fontSize: '0.9em', opacity: 0.8 }}>{cameraError}</p>
               <p style={{ fontSize: '0.8em', marginTop: '10px' }}>Pastikan izin kamera diberikan dan coba refresh halaman.</p>
             </div>
@@ -151,7 +151,7 @@ const WebcamCapture = () => {
              onClick={startPhotobooth}
              disabled={!isCameraOn}
            >
-             MULAI FOTO ✨
+             MULAI FOTO 
            </button>
         )}
 

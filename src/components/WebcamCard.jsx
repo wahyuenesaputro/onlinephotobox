@@ -2,14 +2,14 @@ import React from 'react';
 import Webcam from 'react-webcam';
 import { VideoOff, Camera, Timer } from 'lucide-react';
 
-const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, selectedFilter, children, images, timerDuration, setTimerDuration, isCapturing }) => {
+const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, selectedFilter, children, images, timerDuration, setTimerDuration, isCapturing, maxPhotos = 4 }) => {
   const videoConstraints = {
     width: 1280,
     height: 720,
     facingMode: "user"
   };
 
-  const hasFinished = images.length === 4;
+  const hasFinished = images.length === maxPhotos;
 
   return (
     <div className="relative w-full aspect-[3/4] md:aspect-video bg-black rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gray-100 group">
@@ -60,7 +60,7 @@ const WebcamCard = ({ webcamRef, isCameraOn, setIsCameraOn, flash, countdown, se
       {/* Webcam / Placeholder */}
       {hasFinished ? (
         <div className="w-full h-full flex flex-col items-center justify-center text-white/50 gap-2 bg-gray-800">
-          <p className="font-semibold text-xl text-white">Session Complete! ✨</p>
+          <p className="font-semibold text-xl text-white">Session Complete! </p>
           <p>Check your photostrip preview.</p>
         </div>
       ) : isCameraOn ? (

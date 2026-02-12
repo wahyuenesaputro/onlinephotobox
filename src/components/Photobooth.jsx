@@ -8,20 +8,22 @@ const Photobooth = () => {
   const webcamRef = useRef(null);
   const printRef = useRef(null);
   const [images, setImages] = useState([]);
+  const [sessionDate, setSessionDate] = useState(null);
   const [isCapturing, setIsCapturing] = useState(false);
   const [countdown, setCountdown] = useState(null);
   const [flash, setFlash] = useState(false);
   const [isCameraOn, setIsCameraOn] = useState(true);
 
   const videoConstraints = {
-    width: 720,
-    height: 960, 
+    width: 1080,
+    height: 1440, 
     facingMode: "user"
   };
 
   const startCapture = () => {
     setIsCapturing(true);
     setImages([]);
+    setSessionDate(new Date());
     runSequence(0);
   };
 
@@ -61,6 +63,7 @@ const Photobooth = () => {
   const retake = () => {
     setImages([]);
     setIsCapturing(false);
+    setSessionDate(null);
   };
 
   const downloadStrip = async () => {
@@ -170,7 +173,7 @@ const Photobooth = () => {
             </div>
             <div className="text-center">
               <h2 className="text-2xl font-bold text-gray-800 tracking-tighter">MOFU <span className="text-pink-500">STUDIO</span></h2>
-              <p className="text-xs text-gray-400 mt-1">{new Date().toLocaleDateString()}</p>
+              <p className="text-xs text-gray-400 mt-1">{sessionDate ? sessionDate.toLocaleDateString() : ''}</p>
             </div>
           </div>
         </div>

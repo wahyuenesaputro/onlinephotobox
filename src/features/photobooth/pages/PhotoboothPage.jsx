@@ -19,6 +19,8 @@ const PhotoboothPage = () => {
   const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
   const [timerDuration, setTimerDuration] = useState(3);
 
+  const maxPhotos = selectedTemplate.id === 'retro' ? 3 : 4;
+
   // Logic: Start Sequence
   const startCapture = () => {
     setIsCapturing(true);
@@ -28,7 +30,7 @@ const PhotoboothPage = () => {
 
   // Logic: Countdown & Capture Loop
   const runSequence = (count) => {
-    if (count >= 4) {
+    if (count >= maxPhotos) {
       setIsCapturing(false);
       return;
     }
@@ -118,6 +120,7 @@ const PhotoboothPage = () => {
               timerDuration={timerDuration}
               setTimerDuration={setTimerDuration}
               isCapturing={isCapturing}
+              maxPhotos={maxPhotos}
             >
               <Controls 
                 isCapturing={isCapturing}
@@ -127,11 +130,12 @@ const PhotoboothPage = () => {
                 startCapture={startCapture}
                 retake={retake}
                 downloadStrip={downloadStrip}
+                maxPhotos={maxPhotos}
               />
             </WebcamCard>
 
             {/* Tools Section */}
-            {!isCapturing && images.length < 4 && (
+            {!isCapturing && images.length < maxPhotos && (
               <div className="bg-white/60 backdrop-blur-xl p-6 rounded-3xl border border-white shadow-xl space-y-8 transition-opacity duration-300">
                 <FilterBar 
                   selectedFilter={selectedFilter} 
