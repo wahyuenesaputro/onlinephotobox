@@ -13,7 +13,6 @@ const WebcamCapture = () => {
   const [images, setImages] = useState([]);
   const [countdown, setCountdown] = useState(null);
   const [isCapturing, setIsCapturing] = useState(false);
-  // Added state for camera error handling to prevent blank screen
   const [cameraError, setCameraError] = useState(null);
 
   // SETTING KAMERA
@@ -87,7 +86,6 @@ const WebcamCapture = () => {
 
   return (
     <div className="webcam-wrapper">
-      {/* Debug element to check if component is rendering */}
       <div style={{ padding: '10px', background: 'yellow', marginBottom: '10px', border: '1px solid black' }}>
         Component is rendering - Camera Error: {cameraError ? 'Yes' : 'No'}
       </div>
@@ -96,7 +94,6 @@ const WebcamCapture = () => {
       <div className="camera-box">
         {isCameraOn ? (
           cameraError ? (
-            // Added error display to prevent blank screen when camera access fails
             <div style={{ padding: '100px', color: '#ff6b6b', textAlign: 'center' }}>
               <p>Kamera tidak dapat diakses</p>
               <p style={{ fontSize: '0.9em', opacity: 0.8 }}>{cameraError}</p>
@@ -146,13 +143,13 @@ const WebcamCapture = () => {
         </button>
 
         {!isCapturing && images.length < 4 && (
-           <button
-             className="btn btn-primary"
-             onClick={startPhotobooth}
-             disabled={!isCameraOn}
-           >
-             MULAI FOTO 
-           </button>
+            <button
+                className="btn btn-primary"
+                onClick={startPhotobooth}
+            disabled={!isCameraOn}
+            >
+              Mulai Foto 
+            </button>
         )}
 
         {/* Tombol muncul kalau foto sudah selesai */}

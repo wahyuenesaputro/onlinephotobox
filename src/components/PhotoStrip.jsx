@@ -1,9 +1,13 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import { Camera, Heart, Sparkles, Star, Smile, Upload, X } from 'lucide-react';
 import retroTemplate from '@/assets/image/Purple and White Retro Illustrative Photobooth Template Photostrip (1).png';
 
 const PhotoStrip = forwardRef(({ images, selectedTemplate, selectedFilter }, ref) => {
   const [customSticker, setCustomSticker] = useState(null);
+  const [stickerPos, setStickerPos] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
   const isRetro = selectedTemplate.id === 'retro';
   const photoCount = isRetro ? 3 : 4;
 
@@ -11,10 +15,68 @@ const PhotoStrip = forwardRef(({ images, selectedTemplate, selectedFilter }, ref
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (e) => setCustomSticker(e.target.result);
+      reader.onload = (e) => {
+        setCustomSticker(e.target.result);
+        setStickerPos({ x: 0, y: 0 }); // Reset posisi saat upload baru
+      };
       reader.readAsDataURL(file);
     }
   };
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setDragStart({
+      x: e.clientX - stickerPos.x,
+      y: e.clientY - stickerPos.y
+    });
+  };
+
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    setIsDragging(true);
+    setDragStart({
+      x: touch.clientX - stickerPos.x,
+      y: touch.clientY - stickerPos.y
+    });
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!isDragging) return;
+      setStickerPos({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      });
+    };
+
+    const handleTouchMove = (e) => {
+      if (!isDragging) return;
+      const touch = e.touches[0];
+      setStickerPos({
+        x: touch.clientX - dragStart.x,
+        y: touch.clientY - dragStart.y
+      });
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+    };
+
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      window.addEventListener('touchend', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [isDragging, dragStart]);
 
   return (
     <div className="flex flex-col items-center animate-in slide-in-from-bottom-10 fade-in duration-700 w-full">
@@ -64,11 +126,16 @@ const PhotoStrip = forwardRef(({ images, selectedTemplate, selectedFilter }, ref
 
           {/* Custom Uploaded Sticker */}
           {customSticker && (
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none">
+            <div 
+              className="absolute top-1/2 left-1/2 z-30 cursor-move touch-none"
+              style={{ transform: `translate(calc(-50% + ${stickerPos.x}px), calc(-50% + ${stickerPos.y}px))` }}
+              onMouseDown={handleMouseDown}
+              onTouchStart={handleTouchStart}
+            >
               <img 
                 src={customSticker} 
                 alt="Custom Sticker" 
-                className="w-32 h-32 object-contain drop-shadow-lg" 
+                className="w-32 h-32 object-contain drop-shadow-lg pointer-events-none" 
               />
             </div>
           )}
