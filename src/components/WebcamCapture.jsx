@@ -17,8 +17,8 @@ const WebcamCapture = () => {
 
   // SETTING KAMERA
   const videoConstraints = {
-    width: 720,
-    height: 720,
+    width: 640,  // Ubah sesuai kebutuhan
+    height: 426, // Ubah sesuai kebutuhan, mempertahankan rasio 3:2
     facingMode: "user"
   };
 
@@ -103,8 +103,8 @@ const WebcamCapture = () => {
             <Webcam
               audio={false}
               ref={webcamRef}
-              height={480}
-              width={480}
+              height={480} // Ubah sesuai kebutuhan
+              width={640} //Ubah sesuai kebutuhan
               screenshotFormat="image/jpeg"
               videoConstraints={videoConstraints}
               mirrored={true}
@@ -162,8 +162,7 @@ const WebcamCapture = () => {
       </div>
 
       {/* --- HASIL GRID --- */}
-      {(images.length > 0 || isCapturing) && (
-        <div className="result-section">
+      <div className="result-section">
           <p style={{marginBottom: '10px', opacity: 0.7}}>
             {images.length === 4 ? "Hasil fotomu siap dicetak!" : "Sedang mengambil gambar..."}
           </p>
@@ -176,7 +175,6 @@ const WebcamCapture = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              gap: '15px', // Memberikan jarak antar foto
               padding: '20px',
               backgroundColor: 'white'
             }}
@@ -184,22 +182,59 @@ const WebcamCapture = () => {
 
             {/* Render Foto */}
             {images.map((img, index) => (
-              <img key={index} src={img} className="grid-photo-item" alt="pose" />
+              <div key={index} style={{ position: 'relative', marginBottom: (images.length === 4 && index === 3) ? '0' : '15px' }}>
+                <img src={img} className="grid-photo-item" alt="pose" style={{ width: '100%', display: 'block' }} />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
+                  background: 'rgba(255,255,255,0.8)',
+                  color: '#333',
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '12px',
+                  zIndex: 20
+                }}>
+                  {index + 1}
+                </div>
+              </div>
             ))}
 
             {/* Placeholder (Kotak Kosong) */}
             {[...Array(4 - images.length)].map((_, i) => (
-              <div key={i} className="grid-placeholder">
+              <div key={i} className="grid-placeholder" style={{ position: 'relative', marginBottom: (i === (4 - images.length) - 1) ? '0' : '15px' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
                   <circle cx="12" cy="13" r="3" />
                 </svg>
+                <div style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  right: '10px',
+                  background: '#eee',
+                  color: '#999',
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 'bold',
+                  fontSize: '12px',
+                  zIndex: 20
+                }}>
+                  {images.length + i + 1}
+                </div>
               </div>
             ))}
 
           </div>
         </div>
-      )}
 
     </div>
   );
