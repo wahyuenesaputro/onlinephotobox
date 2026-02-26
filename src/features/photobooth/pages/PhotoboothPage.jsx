@@ -5,11 +5,11 @@ import PhotoStrip from '@/components/PhotoStrip';
 import Controls from '@/components/Controls';
 import FilterBar, { filters } from '@/components/FilterBar';
 import TemplatePicker, { templates } from '@/components/TemplatePicker';
+import ColorPicker, { backgroundColors } from '@/components/ColorPicker';
 
 const PhotoboothPage = () => {
   const webcamRef = useRef(null);
   const printRef = useRef(null);
-  
   const [images, setImages] = useState([]);
   const [isCapturing, setIsCapturing] = useState(false);
   const [countdown, setCountdown] = useState(null);
@@ -17,27 +17,22 @@ const PhotoboothPage = () => {
   const [isCameraOn, setIsCameraOn] = useState(true);
   const [selectedFilter, setSelectedFilter] = useState(filters[0]);
   const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
+  const [selectedColor, setSelectedColor] = useState(backgroundColors[0].value);
   const [timerDuration, setTimerDuration] = useState(3);
 
   const maxPhotos = selectedTemplate.id === 'retro' ? 3 : 4;
-
-  // Logic: Start Sequence
   const startCapture = () => {
     setIsCapturing(true);
     setImages([]);
     runSequence(0);
   };
-
-  // Logic: Countdown & Capture Loop
   const runSequence = (count) => {
     if (count >= maxPhotos) {
       setIsCapturing(false);
       return;
     }
-
     let timer = timerDuration;
     setCountdown(timer);
-    
     const interval = setInterval(() => {
       timer--;
       setCountdown(timer);
@@ -47,40 +42,29 @@ const PhotoboothPage = () => {
       }
     }, 1000);
   };
-
-  // Logic: Take Screenshot
   const capturePhoto = (count) => {
     setCountdown(null);
     setFlash(true);
     setTimeout(() => setFlash(false), 150);
-
     if (webcamRef.current) {
       const imageSrc = webcamRef.current.getScreenshot();
       setImages(prev => [...prev, imageSrc]);
     }
-
     setTimeout(() => {
       runSequence(count + 1);
     }, 1000);
   };
-
-  // Logic: Reset
   const retake = () => {
     setImages([]);
     setIsCapturing(false);
   };
-
-  // Logic: Download
   const downloadStrip = async () => {
     if (printRef.current) {
-      // 1. Render with a transparent background to avoid issues with borders/shadows.
       const canvas = await html2canvas(printRef.current, {
         scale: 3, // High resolution
         backgroundColor: null,
         useCORS: true
       });
-
-      // 2. Create a new canvas and fill it with a solid white background.
       const finalCanvas = document.createElement('canvas');
       finalCanvas.width = canvas.width;
       finalCanvas.height = canvas.height;
@@ -146,6 +130,8 @@ const PhotoboothPage = () => {
                   selectedTemplate={selectedTemplate}
                   onSelectTemplate={setSelectedTemplate}
                 />
+                <div className="h-px bg-gray-200"></div>
+                <ColorPicker selectedColor={selectedColor} onSelectColor={setSelectedColor} />
               </div>
             )}
           </div>
@@ -160,6 +146,7 @@ const PhotoboothPage = () => {
                   images={images} 
                   selectedTemplate={selectedTemplate}
                   selectedFilter={selectedFilter}
+                  selectedColor={selectedColor}
                 />
               </div>
             </div>

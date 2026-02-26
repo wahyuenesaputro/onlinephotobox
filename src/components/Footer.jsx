@@ -18,7 +18,6 @@ const Footer = () => {
               Capture your best moments with our online photobooth. Professional quality photos right from your browser.
             </p>
           </div>
-
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-bold text-gray-900 mb-4">Quick Links</h3>
@@ -29,7 +28,6 @@ const Footer = () => {
               <Link to="/#contact" className="text-gray-500 hover:text-pink-500 transition-colors w-fit">Contact</Link>
             </div>
           </div>
-
           {/* Connect */}
           <div>
             <h3 className="text-lg font-bold text-gray-900 mb-4">Connect</h3>
@@ -47,9 +45,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <div className="border-t border-gray-100 pt-8 text-center">
-          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Mofu Studio. Made with ❤️ for fun photography experiences.</p>
+          <p className="text-gray-400 text-sm">© {new Date().getFullYear()} Mofu Studio. Made with for fun photography experiences.</p>
         </div>
       </div>
     </footer>

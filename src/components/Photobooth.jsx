@@ -3,36 +3,39 @@ import Webcam from 'react-webcam';
 import { Camera, Download, RefreshCw, Trash2, Video, VideoOff } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import html2canvas from 'html2canvas';
+import PhotoStrip from '@/components/PhotoStrip';
+import TemplatePicker, { templates } from '@/components/TemplatePicker';
+import FilterBar, { filters } from '@/components/FilterBar';
+import ColorPicker from '@/components/ColorPicker';
 
 const Photobooth = () => {
   const webcamRef = useRef(null);
   const printRef = useRef(null);
   const [images, setImages] = useState([]);
   const [sessionDate, setSessionDate] = useState(null);
+  const [selectedTemplate, setSelectedTemplate] = useState(templates[0]);
+  const [selectedFilter, setSelectedFilter] = useState(filters[0]);
+  const [selectedColor, setSelectedColor] = useState('#ffffff');
   const [isCapturing, setIsCapturing] = useState(false);
   const [countdown, setCountdown] = useState(null);
   const [flash, setFlash] = useState(false);
   const [isCameraOn, setIsCameraOn] = useState(true);
-
   const videoConstraints = {
     width: 1080,
     height: 1440, 
     facingMode: "user"
   };
-
   const startCapture = () => {
     setIsCapturing(true);
     setImages([]);
     setSessionDate(new Date());
     runSequence(0);
   };
-
   const runSequence = (count) => {
     if (count >= 4) {
       setIsCapturing(false);
       return;
     }
-
     let timer = 3;
     setCountdown(timer);
     
@@ -45,16 +48,12 @@ const Photobooth = () => {
       }
     }, 1000);
   };
-
   const capturePhoto = (count) => {
     setCountdown(null);
     setFlash(true);
     setTimeout(() => setFlash(false), 150);
-
     const imageSrc = webcamRef.current.getScreenshot();
     setImages(prev => [...prev, imageSrc]);
-
-    // Delay sedikit sebelum foto berikutnya
     setTimeout(() => {
       runSequence(count + 1);
     }, 1000);
@@ -106,6 +105,7 @@ const Photobooth = () => {
               videoConstraints={videoConstraints}
               className="w-full h-full object-cover transform scale-x-[-1]" // Mirror effect
               onUserMediaError={() => setIsCameraOn(false)}
+              style={{ filter: selectedFilter.style }}
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center bg-gray-900 text-white gap-4">
@@ -119,6 +119,14 @@ const Photobooth = () => {
           </div>
         )}
       </div>
+      {/* Customization Controls */}
+      {!isCapturing && (
+        <div className="w-full max-w-2xl space-y-6 animate-in slide-in-from-bottom-5 fade-in duration-500">
+          <FilterBar selectedFilter={selectedFilter} onSelectFilter={setSelectedFilter} />
+          <TemplatePicker selectedTemplate={selectedTemplate} onSelectTemplate={setSelectedTemplate} />
+          <ColorPicker selectedColor={selectedColor} onSelectColor={setSelectedColor} />
+        </div>
+      )}
 
       {/* Controls */}
       <div className="flex gap-4 flex-wrap justify-center">
@@ -151,46 +159,14 @@ const Photobooth = () => {
       <div className="mt-8 animate-in slide-in-from-bottom-10 fade-in duration-700">
           <h3 className="text-center text-gray-500 mb-4 text-sm uppercase tracking-widest">Preview Result</h3>
           
-          {/* Ini elemen yang akan di-download */}
-          <div 
-            ref={printRef} 
-            className="bg-white p-5 shadow-xl mx-auto"
-            style={{ width: '280px' }} // Lebar fix untuk hasil strip vertical
-          >
-            <div className="flex flex-col">
-              {images.map((img, idx) => (
-                <div 
-                  key={idx} 
-                  className="relative aspect-[3/4] bg-gray-100 overflow-hidden shadow-sm"
-                  style={{ marginBottom: (images.length === 4 && idx === 3) ? '0' : '15px' }}
-                >
-                  <img src={img} alt={`pose-${idx}`} className="w-full h-full object-cover transform scale-x-[-1]" />
-                  <div className="absolute bottom-2 right-2 bg-white text-black text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full shadow-md z-20">
-                    {idx + 1}
-                  </div>
-                </div>
-              ))}
-              {/* Placeholder jika belum 4 foto */}
-              {[...Array(4 - images.length)].map((_, idx) => (
-                <div 
-                  key={`empty-${idx}`} 
-                  className="relative aspect-[3/4] bg-gray-100 flex items-center justify-center text-gray-300 border-2 border-dashed border-gray-200"
-                  style={{ marginBottom: (idx === (4 - images.length) - 1) ? '0' : '15px' }}
-                >
-                  <Camera size={24} />
-                  <div className="absolute bottom-2 right-2 bg-gray-300 text-gray-500 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full z-20">
-                    {images.length + idx + 1}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-8 mb-2">
-              <h2 className="text-2xl font-bold text-gray-800 tracking-tighter leading-none">MOFU <span className="text-pink-500">STUDIO</span></h2>
-              <p className="text-[10px] text-gray-400 mt-1 font-mono uppercase tracking-widest">
-                {sessionDate ? sessionDate.toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: '2-digit' }) : 'DD/MM/YY'}
-              </p>
-            </div>
-          </div>
+          <PhotoStrip 
+            ref={printRef}
+            images={images}
+            selectedTemplate={selectedTemplate}
+            selectedFilter={selectedFilter}
+            sessionDate={sessionDate}
+            selectedColor={selectedColor}
+          />
       </div>
     </div>
   );

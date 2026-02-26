@@ -31,7 +31,6 @@ const Controls = ({ isCapturing, images, isCameraOn, setIsCameraOn, startCapture
             <Camera size={24} /> Start Photo
           </Button>
         )}
-
         {/* Result Actions */}
         {hasFinished && (
           <>

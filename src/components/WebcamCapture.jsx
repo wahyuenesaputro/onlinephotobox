@@ -7,14 +7,12 @@ const WebcamCapture = () => {
   console.log('WebcamCapture component rendered'); // Debug log
   const webcamRef = useRef(null);
   const gridRef = useRef(null); // Ref untuk mengambil elemen grid
-
   // STATE
   const [isCameraOn, setIsCameraOn] = useState(true);
   const [images, setImages] = useState([]);
   const [countdown, setCountdown] = useState(null);
   const [isCapturing, setIsCapturing] = useState(false);
   const [cameraError, setCameraError] = useState(null);
-
   // SETTING KAMERA
   const videoConstraints = {
     width: 640,  // Ubah sesuai kebutuhan
