@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import Webcam from 'react-webcam';
-import { Camera, Download, RefreshCw, Trash2, Video, VideoOff } from 'lucide-react';
+import { Camera, Download, RefreshCw, Trash2, Video, VideoOff, Timer } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import html2canvas from 'html2canvas';
 import PhotoStrip from '@/components/PhotoStrip';
@@ -20,6 +20,7 @@ const Photobooth = () => {
   const [countdown, setCountdown] = useState(null);
   const [flash, setFlash] = useState(false);
   const [isCameraOn, setIsCameraOn] = useState(true);
+  const [timerDuration, setTimerDuration] = useState(3);
   const videoConstraints = {
     width: 1080,
     height: 1440, 
@@ -31,12 +32,35 @@ const Photobooth = () => {
     setSessionDate(new Date());
     runSequence(0);
   };
+
+  const playShutterSound = () => {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.1);
+    
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+
+    osc.start();
+    osc.stop(ctx.currentTime + 0.1);
+  };
+
   const runSequence = (count) => {
     if (count >= 4) {
       setIsCapturing(false);
       return;
     }
-    let timer = 3;
+    let timer = timerDuration;
     setCountdown(timer);
     
     const interval = setInterval(() => {
@@ -51,6 +75,7 @@ const Photobooth = () => {
   const capturePhoto = (count) => {
     setCountdown(null);
     setFlash(true);
+    playShutterSound();
     setTimeout(() => setFlash(false), 150);
     const imageSrc = webcamRef.current.getScreenshot();
     setImages(prev => [...prev, imageSrc]);
@@ -58,13 +83,11 @@ const Photobooth = () => {
       runSequence(count + 1);
     }, 1000);
   };
-
   const retake = () => {
     setImages([]);
     setIsCapturing(false);
     setSessionDate(null);
   };
-
   const downloadStrip = async () => {
     if (printRef.current) {
       const canvas = await html2canvas(printRef.current, {
@@ -78,7 +101,6 @@ const Photobooth = () => {
       link.click();
     }
   };
-
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-8">
       
@@ -95,7 +117,6 @@ const Photobooth = () => {
             </span>
           </div>
         )}
-
         {images.length < 4 ? (
           isCameraOn ? (
             <Webcam
@@ -125,9 +146,28 @@ const Photobooth = () => {
           <FilterBar selectedFilter={selectedFilter} onSelectFilter={setSelectedFilter} />
           <TemplatePicker selectedTemplate={selectedTemplate} onSelectTemplate={setSelectedTemplate} />
           <ColorPicker selectedColor={selectedColor} onSelectColor={setSelectedColor} />
+          
+          <div className="w-full">
+            <h3 className="text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest ml-1">4. Timer Duration</h3>
+            <div className="flex gap-3">
+              {[3, 5, 10].map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setTimerDuration(t)}
+                  className={`
+                    flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 border
+                    ${timerDuration === t 
+                      ? 'bg-pink-500 text-white border-pink-500 shadow-md scale-105' 
+                      : 'bg-white text-gray-600 border-gray-200 hover:border-pink-300 hover:bg-pink-50'}
+                  `}
+                >
+                  <Timer size={14} /> {t}s
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       )}
-
       {/* Controls */}
       <div className="flex gap-4 flex-wrap justify-center">
         {images.length < 4 && !isCapturing && (
@@ -136,13 +176,11 @@ const Photobooth = () => {
             {isCameraOn ? 'Turn Off' : 'Turn On'}
           </Button>
         )}
-
         {!isCapturing && images.length < 4 && (
           <Button onClick={startCapture} variant="primary" className="!px-10 !py-4 text-lg shadow-pink-500/40 disabled:opacity-50 disabled:cursor-not-allowed" disabled={!isCameraOn}>
             <Camera size={24} /> Start Photo
           </Button>
         )}
-
         {images.length === 4 && (
           <>
             <Button onClick={retake} variant="secondary">
@@ -154,7 +192,6 @@ const Photobooth = () => {
           </>
         )}
       </div>
-
       {/* Result Strip Preview */}
       <div className="mt-8 animate-in slide-in-from-bottom-10 fade-in duration-700">
           <h3 className="text-center text-gray-500 mb-4 text-sm uppercase tracking-widest">Preview Result</h3>

@@ -10,7 +10,6 @@ const Gallery = () => {
     "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&auto=format&fit=crop&q=60",
     "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=800&auto=format&fit=crop&q=60"
   ];
-
   return (
     <div id="gallery" className="w-full py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
@@ -37,5 +36,4 @@ const Gallery = () => {
     </div>
   )
 }
-
 export default Gallery
