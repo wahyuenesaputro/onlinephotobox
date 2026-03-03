@@ -30,8 +30,8 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-gray-800 flex items-center gap-2 tracking-tighter">
-          <Cat className="text-pink-500" size={32} />
-          <span>MOFU <span className="text-pink-500">STUDIO</span></span>
+          <Cat className="text-blue-600" size={32} />
+          <span>MOFU <span className="text-orange-500">STUDIO</span></span>
         </Link>
 
         {/* Desktop Menu */}
@@ -43,8 +43,8 @@ const Navbar = () => {
                   to={link.path} 
                   className={`text-sm font-medium transition-colors duration-300 ${
                     location.pathname === link.path 
-                      ? 'text-pink-500 font-semibold' 
-                      : 'text-gray-600 hover:text-pink-500'
+                      ? 'text-blue-600 font-semibold' 
+                      : 'text-gray-600 hover:text-blue-600'
                   }`}
                 >
                   {link.name}
@@ -76,7 +76,7 @@ const Navbar = () => {
               key={link.name}
               to={link.path}
               className={`text-lg font-medium ${
-                location.pathname === link.path ? 'text-pink-500' : 'text-gray-800'
+                location.pathname === link.path ? 'text-blue-600' : 'text-gray-800'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >

@@ -103,13 +103,9 @@ const Photobooth = () => {
   };
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-8">
-      
-      {/* Area Kamera / Preview */}
       <div className="relative w-full max-w-md aspect-[3/4] bg-black rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
-        {/* Flash Effect */}
         <div className={`absolute inset-0 bg-white z-20 pointer-events-none transition-opacity duration-150 ${flash ? 'opacity-100' : 'opacity-0'}`} />
         
-        {/* Countdown Overlay */}
         {countdown !== null && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/20 backdrop-blur-sm">
             <span className="text-9xl font-bold text-white drop-shadow-lg animate-bounce">
@@ -124,7 +120,7 @@ const Photobooth = () => {
               ref={webcamRef}
               screenshotFormat="image/jpeg"
               videoConstraints={videoConstraints}
-              className="w-full h-full object-cover transform scale-x-[-1]" // Mirror effect
+              className="w-full h-full object-cover transform scale-x-[-1]"
               onUserMediaError={() => setIsCameraOn(false)}
               style={{ filter: selectedFilter.style }}
             />
@@ -140,7 +136,6 @@ const Photobooth = () => {
           </div>
         )}
       </div>
-      {/* Customization Controls */}
       {!isCapturing && (
         <div className="w-full max-w-2xl space-y-6 animate-in slide-in-from-bottom-5 fade-in duration-500">
           <FilterBar selectedFilter={selectedFilter} onSelectFilter={setSelectedFilter} />
@@ -157,8 +152,8 @@ const Photobooth = () => {
                   className={`
                     flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 border
                     ${timerDuration === t 
-                      ? 'bg-pink-500 text-white border-pink-500 shadow-md scale-105' 
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-pink-300 hover:bg-pink-50'}
+                      ? 'bg-blue-600 text-white border-blue-600 shadow-md scale-105' 
+                      : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:bg-blue-50'}
                   `}
                 >
                   <Timer size={14} /> {t}s
@@ -168,7 +163,6 @@ const Photobooth = () => {
           </div>
         </div>
       )}
-      {/* Controls */}
       <div className="flex gap-4 flex-wrap justify-center">
         {images.length < 4 && !isCapturing && (
           <Button onClick={() => setIsCameraOn(!isCameraOn)} variant="secondary" className="!px-6">
@@ -177,7 +171,7 @@ const Photobooth = () => {
           </Button>
         )}
         {!isCapturing && images.length < 4 && (
-          <Button onClick={startCapture} variant="primary" className="!px-10 !py-4 text-lg shadow-pink-500/40 disabled:opacity-50 disabled:cursor-not-allowed" disabled={!isCameraOn}>
+          <Button onClick={startCapture} variant="primary" className="!px-10 !py-4 text-lg shadow-blue-600/40 disabled:opacity-50 disabled:cursor-not-allowed" disabled={!isCameraOn}>
             <Camera size={24} /> Start Photo
           </Button>
         )}
@@ -192,7 +186,6 @@ const Photobooth = () => {
           </>
         )}
       </div>
-      {/* Result Strip Preview */}
       <div className="mt-8 animate-in slide-in-from-bottom-10 fade-in duration-700">
           <h3 className="text-center text-gray-500 mb-4 text-sm uppercase tracking-widest">Preview Result</h3>
           

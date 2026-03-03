@@ -11,8 +11,8 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="flex flex-col gap-4">
             <h3 className="text-2xl font-bold text-gray-900 tracking-tighter flex items-center gap-2">
-              <Cat className="text-pink-500" size={28} />
-              <span>MOFU <span className="text-pink-500">STUDIO</span></span>
+              <Cat className="text-blue-600" size={28} />
+              <span>MOFU <span className="text-orange-500">STUDIO</span></span>
             </h3>
             <p className="text-gray-500 leading-relaxed">
               Capture your best moments with our online photobooth. Professional quality photos right from your browser.
@@ -23,10 +23,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold text-gray-900 mb-4">Quick Links</h3>
             <div className="flex flex-col gap-3">
-              <Link to="/" className="text-gray-500 hover:text-pink-500 transition-colors w-fit">Home</Link>
-              <Link to="/photobooth" className="text-gray-500 hover:text-pink-500 transition-colors w-fit">Photobooth</Link>
-              <Link to="/gallery" className="text-gray-500 hover:text-pink-500 transition-colors w-fit">Gallery</Link>
-              <Link to="/contact" className="text-gray-500 hover:text-pink-500 transition-colors w-fit">Contact</Link>
+              <Link to="/" className="text-gray-500 hover:text-blue-600 transition-colors w-fit">Home</Link>
+              <Link to="/photobooth" className="text-gray-500 hover:text-blue-600 transition-colors w-fit">Photobooth</Link>
+              <Link to="/gallery" className="text-gray-500 hover:text-blue-600 transition-colors w-fit">Gallery</Link>
+              <Link to="/contact" className="text-gray-500 hover:text-blue-600 transition-colors w-fit">Contact</Link>
             </div>
           </div>
 
@@ -35,13 +35,13 @@ const Footer = () => {
             <h3 className="text-lg font-bold text-gray-900 mb-4">Connect</h3>
             <p className="text-gray-500 mb-6">Follow us on social media for more fun photo ideas!</p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-pink-500 hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-all">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-pink-500 hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-all">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-pink-500 hover:text-white transition-all">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-blue-600 hover:text-white transition-all">
                 <Facebook size={20} />
               </a>
             </div>

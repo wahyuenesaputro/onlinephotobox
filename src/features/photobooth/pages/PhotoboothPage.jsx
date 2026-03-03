@@ -82,7 +82,7 @@ const PhotoboothPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-pink-50 via-white to-purple-50 pt-24 pb-8 sm:py-16 md:py-20 font-['Poppins']">
+    <div className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-24 pb-8 sm:py-16 md:py-20 font-['Poppins']">
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -140,7 +140,7 @@ const PhotoboothPage = () => {
           <div className="lg:col-span-5 xl:col-span-4">
             <div className="lg:sticky top-28">
               <div className="relative w-full max-w-xs sm:max-w-sm mx-auto">
-                <div className="absolute -inset-4 bg-gradient-to-r from-pink-200 to-purple-200 rounded-[2.5rem] blur-2xl opacity-40 animate-pulse-slow"></div>
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-200 to-blue-300 rounded-[2.5rem] blur-2xl opacity-40 animate-pulse-slow"></div>
                 <PhotoStrip 
                   ref={printRef} 
                   images={images} 

@@ -7,7 +7,7 @@ export const filters = [
   { name: 'Cool', style: 'saturate(0.8) contrast(1.1) hue-rotate(10deg)' },
   { name: 'B&W', style: 'grayscale(1) contrast(1.1)' },
   { name: 'Vintage', style: 'sepia(0.6) contrast(1.2) brightness(0.9)' },
-  { name: 'Pink', style: 'sepia(0.3) hue-rotate(315deg) contrast(1.1) brightness(1.1)' },
+  { name: 'Blue', style: 'sepia(0.3) hue-rotate(190deg) contrast(1.1) brightness(1.1)' },
   { name: 'Seoul', style: 'brightness(1.15) contrast(0.9) saturate(1.1)' },
 ];
 
@@ -23,8 +23,8 @@ const FilterBar = ({ selectedFilter, onSelectFilter }) => {
             className={`
               flex-shrink-0 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 snap-center border
               ${selectedFilter.name === filter.name 
-                ? 'bg-pink-500 text-white border-pink-500 shadow-lg shadow-pink-500/30 scale-105' 
-                : 'bg-white text-gray-600 border-gray-200 hover:border-pink-300 hover:bg-pink-50'}
+                ? 'bg-blue-600 text-white border-blue-600 shadow-lg shadow-blue-600/30 scale-105' 
+                : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:bg-blue-50'}
             `}
           >
             {filter.name}

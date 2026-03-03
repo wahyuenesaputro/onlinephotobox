@@ -17,9 +17,8 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    // Handle smooth scrolling for hash links
     if (location.hash) {
-      const id = location.hash.substring(1); // remove #
+      const id = location.hash.substring(1);
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
@@ -41,13 +40,11 @@ const Navbar = () => {
       isScrolled || isMobileMenuOpen ? 'bg-white/80 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        {/* Logo */}
         <Link to="/" className="text-2xl font-bold text-gray-800 flex items-center gap-2 tracking-tighter">
-          <Cat className="text-pink-500" size={32} />
-          <span>MOFU <span className="text-pink-500">STUDIO</span></span>
+          <Cat className="text-blue-600" size={32} />
+          <span>MOFU <span className="text-orange-500">STUDIO</span></span>
         </Link>
 
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           <ul className="flex gap-8">
             {navLinks.map((link) => (
@@ -56,8 +53,8 @@ const Navbar = () => {
                   to={link.path} 
                   className={`text-sm font-medium transition-colors duration-300 ${
                     location.pathname + location.hash === link.path
-                      ? 'text-pink-500 font-semibold' 
-                      : 'text-gray-600 hover:text-pink-500'
+                      ? 'text-blue-600 font-semibold' 
+                      : 'text-gray-600 hover:text-blue-600'
                   }`}
                 >
                   {link.name}
@@ -72,7 +69,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
         <button 
           className="md:hidden text-gray-800"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -81,7 +77,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-xl md:hidden flex flex-col p-6 gap-4 animate-in slide-in-from-top-5">
           {navLinks.map((link) => (
@@ -89,7 +84,7 @@ const Navbar = () => {
               key={link.name}
               to={link.path}
               className={`text-lg font-medium ${ 
-                location.pathname + location.hash === link.path ? 'text-pink-500' : 'text-gray-800'
+                location.pathname + location.hash === link.path ? 'text-blue-600' : 'text-gray-800'
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >

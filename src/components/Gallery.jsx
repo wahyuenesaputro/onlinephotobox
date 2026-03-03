@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Gallery = () => {
-  // Data dummy foto (bisa diganti nanti)
   const galleryImages = [
     "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&auto=format&fit=crop&q=60",
     "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=800&auto=format&fit=crop&q=60",
