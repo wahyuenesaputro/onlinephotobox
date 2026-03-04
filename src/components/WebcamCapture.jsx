@@ -60,13 +60,11 @@ const WebcamCapture = () => {
   const retake = () => {
     setImages([]);
   };
-
   return (
     <div className="webcam-wrapper">
       <div style={{ padding: '10px', background: 'yellow', marginBottom: '10px', border: '1px solid black' }}>
         Component is rendering - Camera Error: {cameraError ? 'Yes' : 'No'}
       </div>
-
       <div className="camera-box">
         {isCameraOn ? (
           cameraError ? (
